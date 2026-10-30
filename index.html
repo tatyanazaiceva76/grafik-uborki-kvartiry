@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-site-verification" content="fxav4NFuUbsVKkkGCwAQyVzlPy7XdI-itFY_XiKmodE" />
+  <meta name="robots" content="index,follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; frame-ancestors 'none'; worker-src 'none'">
+  <title>График уборки квартиры на неделю — конструктор</title>
+  <meta name="description" content="Составьте график уборки квартиры на неделю из своих задач, дней, минут и доступности взрослых; распечатайте доску, итоги и неназначенные дела.">
+  <link rel="canonical" href="https://tatyanazaiceva76.github.io/grafik-uborki-kvartiry/">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero no-print">
+    <p class="eyebrow">Редактируемый недельный лист для взрослых</p>
+    <h1>График уборки квартиры на неделю</h1>
+    <p class="lede">Введите собственные дела, оценки времени и доступность взрослых. Конструктор соберёт недельную доску, минутные итоги и отдельный список того, что пока некому выполнить.</p>
+  </header>
+  <main>
+    <noscript><section class="notice no-print"><h2>Для расчёта нужен JavaScript</h2><p>Без JavaScript форма не распределяет задачи. Статическая инструкция и границы инструмента ниже остаются доступными.</p></section></noscript>
+    <section class="notice no-print" aria-labelledby="example-title">
+      <h2 id="example-title">Начните с редактируемого примера</h2>
+      <p>Два условных псевдонима и три задачи лишь показывают механику. Они не задают норму частоты, продолжительности или достаточности уборки.</p>
+    </section>
+    <form id="planner-form" class="planner no-print" novalidate>
+      <section aria-labelledby="adults-title">
+        <div class="section-heading"><div><p class="step">Шаг 1</p><h2 id="adults-title">Взрослые и доступность</h2></div><button id="add-adult" class="secondary" type="button">Добавить взрослого</button></div>
+        <p class="hint">Используйте псевдонимы. Пустая доступность допустима и оставит соответствующие задачи неназначенными.</p>
+        <div id="adults-list" class="editor-grid"></div>
+      </section>
+      <section aria-labelledby="tasks-title">
+        <div class="section-heading"><div><p class="step">Шаг 2</p><h2 id="tasks-title">Задачи недели</h2></div><button id="add-task" class="secondary" type="button">Добавить задачу</button></div>
+        <p class="hint">Название, день и минуты задаёте вы. Явно выбранный взрослый никогда не заменяется другим молча.</p>
+        <div id="tasks-list" class="editor-grid"></div>
+      </section>
+      <div id="errors" class="errors" role="alert" aria-live="assertive" tabindex="-1"></div>
+      <div class="actions"><button class="primary" type="submit">Собрать недельную доску</button><button id="reset-plan" class="secondary" type="button">Сбросить к примеру</button><button id="print-plan" class="secondary" type="button" disabled>Распечатать актуальный результат</button></div>
+    </form>
+    <section id="result" class="result" aria-live="polite" hidden></section>
+    <section class="planner no-print" aria-labelledby="how-title">
+      <p class="step">Как пользоваться</p>
+      <h2 id="how-title">Один список — одна проверяемая неделя</h2>
+      <p>Добавьте от одного до восьми взрослых под удобными псевдонимами и отметьте дни, когда каждый доступен. Затем внесите свои задачи: выберите день, укажите целое число минут и при необходимости закрепите дело за конкретным взрослым. Это ваши оценки, а не нормативы времени.</p>
+      <p>Сначала сохраняются явные назначения. Остальные задачи получают доступного взрослого с наименьшей текущей суммой недельных минут; при равенстве действует порядок взрослых в форме. Недоступная или удалённая явная связь не заменяется молча — задача попадает в список неназначенных.</p>
+      <p>Перед печатью проверьте доску, таблицу минут и равенство общего количества введённых, назначенных и неназначенных минут. Любая правка скрывает старый результат, поэтому распечатывается только заново рассчитанная версия.</p>
+      <h2>Короткие ответы</h2>
+      <h3>Это гарантирует справедливое распределение?</h3>
+      <p>Нет. Правило прозрачно раскладывает введённые данные, но не оценивает усилия, договорённости, качество или справедливость.</p>
+      <h3>Здесь есть рекомендации по чистоте или бытовой химии?</h3>
+      <p>Нет. Названия дел, дни и минуты выбирает пользователь. Инструмент предназначен для взрослых и не задаёт санитарных стандартов.</p>
+      <p>Общий подход к недельной организации также описан в <a href="https://klining24.ru/articles/organizacziya-uborki-v-kvartire-plan-na-nedelyu/" rel="noopener noreferrer">материале Клининг24</a>; ссылка служит справочной, а расчёт и тексты этого конструктора являются самостоятельными.</p>
+    </section>
+    <aside class="privacy-note no-print">
+      <h2>Данные и границы</h2>
+      <p>Введённые в форму значения обрабатываются JavaScript этой страницы: приложение их не загружает, не сохраняет и не отправляет в аналитику. При открытии браузер получает статические файлы с текущего сайта; возможные журналы хостинга не контролируются этим инструментом. Печать выполняют браузер и выбранный пользователем принтер. Нет аккаунта, трекинга или внешних ресурсов приложения.</p>
+    </aside>
+  </main>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

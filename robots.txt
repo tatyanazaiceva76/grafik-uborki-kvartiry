@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /grafik-uborki-kvartiry/
+
+Sitemap: https://tatyanazaiceva76.github.io/grafik-uborki-kvartiry/sitemap.xml
